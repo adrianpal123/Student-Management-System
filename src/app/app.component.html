@@ -1,0 +1,220 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <a class="navbar-brand" style="color:beige">Student Management System</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div  class="collapse navbar-collapse" id="navbarSupportedContent"   >
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active" >
+        <a class="nav-link" href="#" style="color:beige">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color:beige" (click)="onOpenModal(null, 'add')">Add Student</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<br>
+<br>
+
+
+<!--STUDENT PICTURES after nav bar-->
+<div class="container">
+   <h3 class="mb-2">Meet some UVT students</h3>
+   <div class="section-intro mb-3">Section intro goes here lorem ipsum</div>
+
+   <div id="start-team-container">
+   <div class="integration-list row justify-content-center py-5">
+      
+       <div *ngFor= "let student of students" class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5 top-line-lg"><a href="#"><img class="shadow rounded-circle" src={{student.imageUrl}} alt=""> </a> {{student.name}}</div>
+       <div>
+       </div>
+      
+      
+         <!-- <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5 bottom-line-lg"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt=""></a></div>
+         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5 top-line-lg"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""></a></div>
+         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5 bottom-line-lg"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt=""></a></div>
+         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5 top-line-lg"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar5.png" alt=""></a></div>
+         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt=""></a></div>
+         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5 top-line-lg"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt=""></a></div>
+         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5 bottom-line-lg"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar8.png" alt=""></a></div>
+         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5 top-line-lg"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""></a></div>
+         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5 bottom-line-lg"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt=""></a></div>
+         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""></a></div>
+         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""></a></div>
+         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""></a></div>
+         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""></a></div>
+         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""></a></div>
+
+      </div>
+   -->
+      <!--//row-->
+      <div class="pt-3 text-center">
+         <a class="btn btn-light" href="#">View More</a>
+      </div>
+   </div>
+</div>
+
+
+<div class="container" id="main-container" >
+   <br>
+       <br>
+    <div class="row">
+        <div *ngFor= "let student of students"  class="col-md-6 col-xl-3" >
+            <div class="card m-b-30" style="opacity: 0.7; background-color: beige;" >
+                <div class="card-body row">
+                    <div class="col-6">
+                        <a href=""><img src={{student?.imageUrl}} alt="" class="img-fluid rounded-circle w-60"></a>
+                    </div>
+                    <div class="col-6 card-title align-self-center mb-0">
+                        <h5 style="font-weight: bold;">{{student?.name}}</h5>
+                        <p class="m-0" style="font-weight: bold;">{{student?.department}}</p>
+                        <p class="m-1" style="font-weight: bold;">Year: {{student?.year}}</p>
+
+                    </div>
+                </div>
+                
+                <ul class="list-group list-group-flush"  >
+                    <li class="list-group-item" style="font-weight: bold;"><i class="fa fa-envelope float-right" ></i><a href="#">{{student?.email}}</a></li>
+                    <li class="list-group-item" style="font-weight: bold;"><i class="fa fa-phone float-right" ></i>{{student?.phoneNumber}}</li>
+                </ul>
+                <div class="card-body" >
+                    <div class="float-right btn-group btn-group-sm" >
+                        <a (click)="onOpenModal(student, 'edit')" href="#" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                        <a (click)="onOpenModal(student, 'delete')" href="#" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Adauagare student Modal-->
+        <div class="modal fade" data-backdrop="false" id="addStudentModal" tabindex="-1" role="dialog" aria-labelledby="addStudentModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="addStudentModalLabel">Add Student</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+                  <form #addForm="ngForm" (ngSubmit)="onAddStudent(addForm)">
+                  <div class="form-group">
+                     <label for="name">Name</label>
+                     <input type="text" ngModel name="name" class="form-control" id="name" placeholder="Name" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="email">Email Address</label>
+                     <input type="email" ngModel name="email" class="form-control" id="email" placeholder="Email" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="phone">Department</label>
+                     <input type="text" ngModel name="department" class="form-control" id="department" placeholder="department" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="phone">Year</label>
+                     <input type="text" ngModel name="year" class="form-control" id="year" placeholder="year" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="phone">Phone</label>
+                     <input type="text" ngModel name="phoneNumber" class="form-control" id="phoneNumber" placeholder="phoneNumber" required>
+                  </div>
+                  <div class="form-group">
+                     <label for="phone">Image URL</label>
+                     <input type="text" ngModel name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="phone">Student code</label>
+                    <input type="text" ngModel name="studentCode" class="form-control" id="studentCode" placeholder="Student Code" required>
+                 </div>
+                  <div class="modal-footer">
+                     <button type="button" id="add-student-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                     <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
+                  </div>
+                  </form>
+               </div>
+            </div>
+          </div>
+          </div>
+
+        <!-- modificare student Modal-->
+        <div  class="modal fade" id="editStudentModal" tabindex="-1" role="dialog" aria-labelledby="editModelLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+             <div class="modal-content">
+                <div class="modal-header">
+                   <h5 class="modal-title" id="updateStudentModalLabel">Edit Student Data {{editStudent?.name}}</h5>
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                   </button>
+                </div>
+                <div class="modal-body">
+                   <form #editForm="ngForm">
+                      <div class="form-group">
+                         <label for="name">Name</label>
+                         <input type="text" ngModel="{{editStudent?.name}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
+                      </div>
+                      <input type="hidden" ngModel="{{editStudent?.id}}" name="id" class="form-control" id="id" placeholder="Email">
+                      <input type="hidden" ngModel="{{editStudent?.studentCode}}" name="userCode" class="form-control" id="userCode" placeholder="Email">
+                      <div class="form-group">
+                         <label for="email">Email Address</label>
+                         <input type="email" ngModel="{{editStudent?.email}}" name="email" class="form-control" id="email" placeholder="Email">
+                      </div>
+                      <div class="form-group">
+                         <label for="phone">Department</label>
+                         <input type="text" ngModel="{{editStudent?.department}}" name="department" class="form-control" id="department" placeholder="Job title">
+                      </div>
+                      <div class="form-group">
+                        <label for="phone">Year</label>
+                        <input type="text" ngModel="{{editStudent?.year}}" name="year" class="form-control" id="year" placeholder="year">
+                     </div>
+                      <div class="form-group">
+                         <label for="phone">Phone</label>
+                         <input type="text" ngModel="{{editStudent?.phoneNumber}}" name="phone" class="form-control" id="phone" name="phone" placeholder="Phone">
+                      </div>
+                      <div class="form-group">
+                         <label for="phone">Image URL</label>
+                         <input type="text" ngModel="{{editStudent?.imageUrl}}" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL">
+                      </div>
+                      <div class="modal-footer">
+                         <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                         <button (click)="onUpdateStudent(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Save changes</button>
+                      </div>
+                   </form>
+                </div>
+             </div>
+            </div>
+         </div>
+
+
+             
+
+        <!-- stergere student Modal-->
+        <div class="modal fade" id="deleteStudentModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+             <div class="modal-content">
+                <div class="modal-header">
+                   <h5 class="modal-title" id="deleteModelLabel">Delete Student</h5>
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                   </button>
+                </div>
+                <div class="modal-body">
+                   <p>Are you sure you want to delete employee {{deleteStudent?.name}}?</p>
+                   <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                      <button (click)="onDeleteStudent(deleteStudent?.id!)" class="btn btn-danger" data-dismiss="modal" >Yes</button>
+                   </div>
+                </div>
+             </div>
+          </div>
+        </div>
+        </div>
+
+    </div>
+</div>
