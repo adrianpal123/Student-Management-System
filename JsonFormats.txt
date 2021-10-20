@@ -1,0 +1,20 @@
+JSON formats:
+
+https://gyazo.com/6868275cf998375554161909c4ded590 - myPic;
+
+     {
+        "name": "Adrian Pal",
+       	"email": "adrian.pal00@e-uvt.ro",
+       	"phoneNumber": "0742223409",
+       	"imageUrl": "pic.jpg",
+       	"studentCode": "https://gyazo.com/6868275cf998375554161909c4ded590",
+       	"year": "3",
+       	"department": "Informatica Romana"
+       }
+
+
+
+
+pics:
+
+https://flyclipart.com/businessman-mascot-businessman-with-briefcase-cartoon-character-cartoon-person-png-605770
