@@ -18,6 +18,8 @@ public class Student implements Serializable {
     private String studentCode;
     private int year;
     private String department;
+    @Column(nullable = false)
+    private float grade;
 
     public Student() {
     }
@@ -101,6 +103,14 @@ public class Student implements Serializable {
         this.department = department;
     }
 
+    public float getGrade() {
+        return grade;
+    }
+
+    public void setGrade(float grade) {
+        this.grade = grade;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -112,6 +122,7 @@ public class Student implements Serializable {
                 ", studentCode='" + studentCode + '\'' +
                 ", year=" + year +
                 ", department='" + department + '\'' +
+                ", grade=" + grade +
                 '}';
     }
 

@@ -66,9 +66,11 @@ export class AppComponent implements OnInit{
     this.studentService.deleteStudents(StudentId).subscribe(
       (response: void) => {
         console.log(response);
+        console.log(StudentId);
         this.getStudents();
       },
       (error: HttpErrorResponse) => {
+        console.log(StudentId)
         alert(error.message);
       }
     );
@@ -91,6 +93,22 @@ export class AppComponent implements OnInit{
       this.getStudents();
     }
   }
+
+  public sortedStudents()
+  {
+    this.studentService.getSortedStudents().subscribe(
+      (response: Student[]) =>
+        {
+          this.students = response;
+        },
+        (error: HttpErrorResponse) =>
+        {
+          alert(error.message);
+        }
+    );
+
+  }
+
   public onOpenModal(student: Student | null, mode: string): void{
     const container = document.getElementById('main-container');
     const button = document.createElement('button')
@@ -106,6 +124,8 @@ export class AppComponent implements OnInit{
     if (mode == 'delete'){
       button.setAttribute('data-target','#deleteStudentModal');
     }
+    if (mode == 'view')
+      button.setAttribute('data-target','#viewStudentModal')
 
     container?.append(button);
     button.click()

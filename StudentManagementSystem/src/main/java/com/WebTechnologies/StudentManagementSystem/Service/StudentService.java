@@ -48,5 +48,9 @@ public class StudentService {
         studentRepo.deleteStudentById(id);
     }
 
+    public List<Student> findByOrderByGrade()
+    {
+        return studentRepo.findByOrderByGradeDesc();
+    }
 
 }
