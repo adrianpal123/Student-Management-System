@@ -29,4 +29,8 @@ export class StudentService {
         return this.http.delete<void>(`${this.apiServiceUrl}/student/delete/${studentId}`);
     }
 
+    public getSortedStudents() :Observable<Student[]>{
+        return this.http.get<Student[]>(`${this.apiServiceUrl}/student/sort`);
+    }
+
 }
