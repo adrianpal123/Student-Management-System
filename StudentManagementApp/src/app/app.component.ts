@@ -11,14 +11,16 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent implements OnInit{
   public students: Student[] | undefined;
+  public sorted_students: Student[] | undefined;
   public editStudent: Student | undefined;
   public deleteStudent: Student | undefined;
-
+  
   constructor(private studentService: StudentService) { }
 
   ngOnInit()
   {
     this.getStudents();
+    this.sortedStudents();
   }
 
   public getStudents(): void
@@ -96,10 +98,11 @@ export class AppComponent implements OnInit{
 
   public sortedStudents()
   {
+
     this.studentService.getSortedStudents().subscribe(
       (response: Student[]) =>
         {
-          this.students = response;
+          this.sorted_students = response;
         },
         (error: HttpErrorResponse) =>
         {
@@ -131,5 +134,6 @@ export class AppComponent implements OnInit{
     button.click()
   }
 
+  
 
 }

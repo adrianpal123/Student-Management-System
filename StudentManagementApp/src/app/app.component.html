@@ -217,10 +217,11 @@
                       <div class="page-people-directory">
                           <div class="row">
                                   <br>
-                                  <div class="list-group contact-group" *ngFor= "let student of students" >
+                                  <div class="list-group contact-group" *ngFor= "let student of sorted_students; let i=index " >
                                       <a href="#"  class="list-group-item">
-                                          <div class="media">
+                                          <div class="media" *ngIf="i <= 15">
                                               <div class="pull-left">
+                                                 <h2>#{{i+1}}</h2>
                                                   <img class="img-circle" src={{student.imageUrl}} alt="...">
                                               </div>
                                               <div class="media-body">
