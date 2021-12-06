@@ -1,22 +1,25 @@
+<!--Nav Bar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
   <a class="navbar-brand" style="color:beige">Student Management System</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-
   <div  class="collapse navbar-collapse" id="navbarSupportedContent"   >
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active" >
-        <a class="nav-link" href="#" style="color:beige">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/" style="color:beige">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" style="color:beige" (click)="onOpenModal(null, 'add')">Add Student</a>
+        <a class="nav-link" href="#" style="color:beige" (click)="onOpenModal(null, 'add')">Add Student!</a>
       </li>
+      <li class="nav-item">
+         <a class="nav-link" href="#" style="color:beige" (click)="onOpenModal(null, 'view')" >Highest Grades!</a>
+       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <input type="search" (ngModelChange)="searchStudents(key.value)" #key="ngModel" ngModel
+      name="key" id="searchName"class="form-control mr-sm-2" type="search" placeholder="Search" placeholder = "Search Students ..." required>
     </form>
   </div>
 </nav>
@@ -27,7 +30,6 @@
 <!--STUDENT PICTURES after nav bar-->
 <div class="container">
    <h3 class="mb-2">Meet some UVT students</h3>
-   <div class="section-intro mb-3">Section intro goes here lorem ipsum</div>
 
    <div id="start-team-container">
    <div class="integration-list row justify-content-center py-5">
@@ -36,32 +38,11 @@
        <div>
        </div>
       
-      
-         <!-- <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5 bottom-line-lg"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt=""></a></div>
-         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5 top-line-lg"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""></a></div>
-         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5 bottom-line-lg"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt=""></a></div>
-         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5 top-line-lg"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar5.png" alt=""></a></div>
-         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt=""></a></div>
-         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5 top-line-lg"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt=""></a></div>
-         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5 bottom-line-lg"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar8.png" alt=""></a></div>
-         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5 top-line-lg"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""></a></div>
-         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5 bottom-line-lg"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt=""></a></div>
-         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""></a></div>
-         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""></a></div>
-         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""></a></div>
-         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""></a></div>
-         <div class="item col-4 col-md-3 col-lg-2 mb-3 mb-lg-5"><a href="#"><img class="shadow rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""></a></div>
-
-      </div>
-   -->
-      <!--//row-->
-      <div class="pt-3 text-center">
-         <a class="btn btn-light" href="#">View More</a>
-      </div>
    </div>
 </div>
 
 
+<!--Main Container-->
 <div class="container" id="main-container" >
    <br>
        <br>
@@ -83,7 +64,9 @@
                 <ul class="list-group list-group-flush"  >
                     <li class="list-group-item" style="font-weight: bold;"><i class="fa fa-envelope float-right" ></i><a href="#">{{student?.email}}</a></li>
                     <li class="list-group-item" style="font-weight: bold;"><i class="fa fa-phone float-right" ></i>{{student?.phoneNumber}}</li>
+                    <li class="list-group-item" style="font-weight: bold;">Grade: {{student?.grade}}</li>
                 </ul>
+                
                 <div class="card-body" >
                     <div class="float-right btn-group btn-group-sm" >
                         <a (click)="onOpenModal(student, 'edit')" href="#" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
@@ -92,7 +75,7 @@
                 </div>
             </div>
         </div>
-
+    </div>
         <!-- Adauagare student Modal-->
         <div class="modal fade" data-backdrop="false" id="addStudentModal" tabindex="-1" role="dialog" aria-labelledby="addStudentModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -123,7 +106,7 @@
                   </div>
                   <div class="form-group">
                      <label for="phone">Phone</label>
-                     <input type="text" ngModel name="phoneNumber" class="form-control" id="phoneNumber" placeholder="phoneNumber" required>
+                     <input type="text" ngModel name="phoneNumber" class="form-control" id="phoneNumber" placeholder="phone Number" required>
                   </div>
                   <div class="form-group">
                      <label for="phone">Image URL</label>
@@ -133,6 +116,10 @@
                     <label for="phone">Student code</label>
                     <input type="text" ngModel name="studentCode" class="form-control" id="studentCode" placeholder="Student Code" required>
                  </div>
+                 <div class="form-group">
+                  <label for="phone">Grade</label>
+                  <input type="number" ngModel name="grade" class="form-control" id="grade" placeholder="Grade" required>
+               </div>
                   <div class="modal-footer">
                      <button type="button" id="add-student-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
                      <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
@@ -205,16 +192,57 @@
                    </button>
                 </div>
                 <div class="modal-body">
-                   <p>Are you sure you want to delete employee {{deleteStudent?.name}}?</p>
+                   <p>Are you sure you want to delete this student? {{deleteStudent?.name}}</p>
                    <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                      <button (click)="onDeleteStudent(deleteStudent?.id!)" class="btn btn-danger" data-dismiss="modal" >Yes</button>
+                      <button (click)="onDeleteStudent(deleteStudent!.id)" class="btn btn-danger" data-dismiss="modal" >Yes</button>
                    </div>
                 </div>
              </div>
           </div>
         </div>
-        </div>
 
-    </div>
+
+        <div class="modal fade" id="viewStudentModal" tabindex="-1" role="dialog" aria-labelledby="viewStudentModal" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="deleteModelLabel">Top 15 Students with the highest grades!</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="container">
+                  <div class="col-md-12">
+                      <div class="page-people-directory">
+                          <div class="row">
+                                  <br>
+                                  <div class="list-group contact-group" *ngFor= "let student of sorted_students; let i=index " >
+                                      <a href="#"  class="list-group-item">
+                                          <div class="media" *ngIf="i <= 15">
+                                              <div class="pull-left">
+                                                 <h2>#{{i+1}}</h2>
+                                                  <img class="img-circle" src={{student.imageUrl}} alt="...">
+                                              </div>
+                                              <div class="media-body">
+                                                  <h4 class="media-heading">{{student?.name}} <small>Department: {{student?.department}}</small></h4>
+                                                  <div class="media-content">
+                                                      <li><i class="fa fa-graduation-cap"></i> Student's final grade: <span style="color: brown">{{student?.grade}}</span> </li>
+                                                          <li><i class="fa fa-mobile"></i> {{student?.phoneNumber}}</li>
+                                                          <li><i class="fa fa-envelope-o"></i> {{student?.email}}</li>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </a>
+                                      <br>
+                                  </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>            </div>
+         </div>
+       </div>
+
+      </div>
 </div>
+

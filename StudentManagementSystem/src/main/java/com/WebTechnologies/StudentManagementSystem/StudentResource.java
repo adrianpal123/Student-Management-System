@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.print.attribute.standard.ReferenceUriSchemesSupported;
 import java.util.List;
 
 @RestController
@@ -64,6 +65,12 @@ public class StudentResource {
         }
     }
 
+    @GetMapping("/sort")
+    public ResponseEntity<List<Student>> orderedStudents()
+    {
+        List<Student> students = studentService.findByOrderByGrade();
+        return new ResponseEntity<>(students, HttpStatus.OK);
+    }
 
 
 

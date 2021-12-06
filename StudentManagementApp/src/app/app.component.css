@@ -116,3 +116,59 @@ img, svg {
         margin-bottom: 3rem !important;
     }
 }
+
+
+
+
+
+
+
+
+.page-people-directory .contact-group {
+    margin-top: 20px;
+}
+
+.page-people-directory .contact-group .media img {
+    width: 80px;
+}
+
+.page-people-directory .contact-group .media-heading {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.page-people-directory .contact-group .media-heading small {
+    margin-left: 5px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #999;
+}
+
+.page-people-directory .contact-group .list-group-item {
+    border: none;
+    margin-top: 10px;
+}
+
+.page-people-directory .contact-group .list-group-item:hover {
+    background-color: #fcfcfc;
+}
+
+.page-people-directory .contact-group .media-content {
+    margin-top: 5px;
+}
+
+.page-people-directory .contact-group .fa:before {
+    font-size: 20px;
+    color:gray;
+}
+
+.page-people-directory .contact-group .media-content ul {
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+.page-people-directory .contact-group .media-content ul > li {
+    display: inline-block;
+    min-width: 200px;
+    margin-bottom: 5px;
+}

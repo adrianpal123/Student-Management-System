@@ -16,4 +16,6 @@ public interface StudentRepo extends JpaRepository<Student,Long> {
 
     Student deleteStudentByName(String name);
 
+    List<Student> findByOrderByGradeDesc();
+
 }

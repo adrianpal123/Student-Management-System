@@ -8,5 +8,6 @@ export interface Student
     studentCode: string;
     year: number;
     department: string;
+    grade : number;
     
 }
