@@ -3,6 +3,6 @@ https://bootdey.com/img/Content/avatar/avatar2.png - boy - listed
 https://bootdey.com/img/Content/avatar/avatar3.png - girl - listed
 https://bootdey.com/img/Content/avatar/avatar4.png - boy - listed
 https://bootdey.com/img/Content/avatar/avatar5.png - boy - listed
-https://bootdey.com/img/Content/avatar/avatar6.png - boy
-https://bootdey.com/img/Content/avatar/avatar7.png - boy
+https://bootdey.com/img/Content/avatar/avatar6.png - boy - listed
+https://bootdey.com/img/Content/avatar/avatar7.png - boy - listed
 https://bootdey.com/img/Content/avatar/avatar8.png - girl

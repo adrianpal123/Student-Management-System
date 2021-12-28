@@ -2,11 +2,15 @@ package com.WebTechnologies.StudentManagementSystem;
 
 import com.WebTechnologies.StudentManagementSystem.Service.StudentService;
 import com.WebTechnologies.StudentManagementSystem.model.Student;
+import com.WebTechnologies.StudentManagementSystem.repo.StudentRepo;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.print.attribute.standard.ReferenceUriSchemesSupported;
+import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -72,6 +76,23 @@ public class StudentResource {
         return new ResponseEntity<>(students, HttpStatus.OK);
     }
 
+    @GetMapping("/sortNames")
+    public ResponseEntity<List<Student>> orderedStudentsNames()
+    {
+        List<Student> students = studentService.findByOrderByNames();
+        return new ResponseEntity<>(students, HttpStatus.OK);
+    }
+/*
+    @GetMapping("/donwload/ExcelReport")
+    public void downloadExcel(HttpServletResponse response) throws IOException {
+
+        response.setContentType("application/vnd.ms-excel");
+        response.setHeader("Content-Disposition", "attachment; filename=student.xlsx");
+        ByteArrayInputStream stream = studentService.StudentListToExcelFile(studentService.FindAllStudents());
+        IOUtils.copy(stream, response.getOutputStream());
+        System.out.println("excel report downloaded successfully...........");
+    }
+*/
 
 
 }

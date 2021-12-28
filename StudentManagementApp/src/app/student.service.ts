@@ -7,6 +7,7 @@ import { environment } from './../environments/environment.prod';
 @Injectable({
   providedIn: 'root'
 })
+
 export class StudentService {
 
   private apiServiceUrl = environment.apiBaseUrl;
@@ -31,6 +32,10 @@ export class StudentService {
 
     public getSortedStudents() :Observable<Student[]>{
         return this.http.get<Student[]>(`${this.apiServiceUrl}/student/sort`);
+    }
+
+    public getSortedStudentsNames() :Observable<Student[]>{
+        return this.http.get<Student[]>(`${this.apiServiceUrl}/student/sortNames`);
     }
 
 }

@@ -4,6 +4,7 @@ import com.WebTechnologies.StudentManagementSystem.model.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,5 +18,12 @@ public interface StudentRepo extends JpaRepository<Student,Long> {
     Student deleteStudentByName(String name);
 
     List<Student> findByOrderByGradeDesc();
+
+    List<Student> findByOrderByName();
+
+    //public ByteArrayInputStream StudentListToExcelFile(List<Student> students);
+
+
+
 
 }

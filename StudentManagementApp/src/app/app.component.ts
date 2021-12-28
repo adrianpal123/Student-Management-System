@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Student } from './student';
 import { StudentService } from './student.service';
 import { NgForm } from '@angular/forms';
+import * as XLSX from 'xlsx';
+
 
 @Component({
   selector: 'app-root',
@@ -12,8 +14,12 @@ import { NgForm } from '@angular/forms';
 export class AppComponent implements OnInit{
   public students: Student[] | undefined;
   public sorted_students: Student[] | undefined;
+  public sorted_students_Names: Student[] | undefined;
   public editStudent: Student | undefined;
   public deleteStudent: Student | undefined;
+  public fileName= 'Student Data.xlsx';
+
+
   
   constructor(private studentService: StudentService) { }
 
@@ -21,6 +27,7 @@ export class AppComponent implements OnInit{
   {
     this.getStudents();
     this.sortedStudents();
+    this.sortedStudentsNames();
   }
 
   public getStudents(): void
@@ -64,7 +71,7 @@ export class AppComponent implements OnInit{
     );
   }
 
-  public onDeleteStudent(StudentId: number): void {
+  public onDeleteStudent(StudentId: number ): void {
     this.studentService.deleteStudents(StudentId).subscribe(
       (response: void) => {
         console.log(response);
@@ -112,6 +119,37 @@ export class AppComponent implements OnInit{
 
   }
 
+  public sortedStudentsNames()
+  {
+
+    this.studentService.getSortedStudentsNames().subscribe(
+      (response: Student[]) =>
+        {
+          this.sorted_students_Names = response;
+        },
+        (error: HttpErrorResponse) =>
+        {
+          alert(error.message);
+        }
+    );
+
+  }
+
+  public exportexcel(): void
+  {
+    /* pass here the table id */
+    let element = document.getElementById('excel-table');
+    const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+ 
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+ 
+    /* save to file */  
+    XLSX.writeFile(wb, this.fileName);
+ 
+  }
+
   public onOpenModal(student: Student | null, mode: string): void{
     const container = document.getElementById('main-container');
     const button = document.createElement('button')
@@ -129,6 +167,12 @@ export class AppComponent implements OnInit{
     }
     if (mode == 'view')
       button.setAttribute('data-target','#viewStudentModal')
+
+    if (mode == 'viewSortedNames')
+      button.setAttribute('data-target','#viewSortedStudentModal')
+
+      if (mode == 'downloadStudentData')
+      button.setAttribute('data-target','#viewDownloadStudentGrades')
 
     container?.append(button);
     button.click()
