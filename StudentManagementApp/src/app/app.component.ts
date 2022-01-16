@@ -160,9 +160,11 @@ export class AppComponent implements OnInit{
       button.setAttribute('data-target','#addStudentModal');
     }
     if (mode == 'edit'){
+      this.editStudent = student? student:undefined;
       button.setAttribute('data-target','#editStudentModal');
     }
     if (mode == 'delete'){
+      this.deleteStudent = student? student:undefined;
       button.setAttribute('data-target','#deleteStudentModal');
     }
     if (mode == 'view')
